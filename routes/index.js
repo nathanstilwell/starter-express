@@ -2,20 +2,24 @@
 /*global module: true, require: true*/
 'use strict';
 
-module.exports = function photocracyRouter (app) {
+var router = require('express').Router();
 
-  var router = require('express').Router();
-  var nonsense = require('./nonsense');
+// var nonsense = require('./nonsense');
 //
 //  Placeholder page title
 //
-  router.use(function (req, res, next) {
-    res.locals.pageTitle = 'Sample Express App';
-    next();
-  });
+  // router.use(function (req, res, next) {
+  //   res.locals.pageTitle = 'Sample Express App';
+  //   next();
+  // });
 
-  app.use(nonsense);
-  app.get('/', function (req, res) {
-    res.render('index', {});
-  });
-}; // module exports
+  // router.use(nonsense);
+router.get('/', function (req, res) {
+  res.render('index', {});
+});
+
+
+var nonsenseRouter = require('./nonsense');
+router.use('/nonsense', nonsenseRouter);
+
+module.exports = router;

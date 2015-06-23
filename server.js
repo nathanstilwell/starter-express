@@ -8,8 +8,13 @@ var express = require('express');
 var app = require('./lib/app/setup')(express());
 // set to the root of the project
 
-var sampleAppRouter = require('./routes');
-app = sampleAppRouter(app);
+// var sampleAppRouter = require('./routes');
+// app.get('/', function (req, res) {
+//   res.render('index', {});
+// });
+
+var router = require('./routes');
+app.use('/', router);
 
 //
 //  Start Listening on the Port
